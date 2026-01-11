@@ -7,16 +7,16 @@ WORKDIR /app
 # Copy requirements
 COPY requirements.txt .
 
-# Install dependencies
+# Upgrade pip and install dependencies
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r requirements.txt
 
-# Copy app code
+# Copy all application code
 COPY . .
 
-# Expose port (Render uses $PORT)
+# Expose port (Render sets $PORT automatically)
 ENV PORT=10000
 EXPOSE $PORT
 
-# Start command
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "admin_users:app"]
+# Start command (shell form to expand $PORT)
+CMD gunicorn --bind 0.0.0.0:$PORT admin_users:app
