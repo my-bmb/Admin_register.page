@@ -4,6 +4,7 @@ services:
     env: python
     region: singapore
     plan: free
+    runtime: python-3.10.13       # ← यहाँ set करो
     buildCommand: |
       pip install --upgrade pip
       pip install setuptools wheel
@@ -22,5 +23,3 @@ services:
         value: admin
       - key: ADMIN_PASSWORD
         sync: false
-      - key: PYTHON_VERSION
-        value: 3.9.0
