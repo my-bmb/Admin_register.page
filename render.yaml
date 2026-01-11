@@ -2,9 +2,12 @@ services:
   - type: web
     name: bite-me-buddy-users-admin
     env: python
-    region: singapore
+    region: singapore  # or oregon, frankfurt, etc.
     plan: free
-    buildCommand: pip install -r requirements.txt
+    branch: main
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
     startCommand: gunicorn --bind 0.0.0.0:$PORT admin_users:app
     healthCheckPath: /admin/health
     autoDeploy: true
@@ -18,6 +21,12 @@ services:
       - key: ADMIN_USERNAME
         value: admin
       - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
         sync: false
       - key: PYTHON_VERSION
         value: 3.11.6
