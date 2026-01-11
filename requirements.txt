@@ -5,5 +5,5 @@ Werkzeug==2.3.7
 gunicorn==21.2.0
 reportlab==3.6.12
 PyPDF2==1.27.5
-Pillow==9.5.0        # downgraded for Python 3.13 compatibility
+Pillow==10.0.1
 requests==2.31.0
