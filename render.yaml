@@ -4,7 +4,7 @@ services:
     env: python
     region: singapore
     plan: free
-    runtime: python-3.10.13       # ← यहाँ set करो
+    runtime: python-3.10.13      # ← Python version fixed here
     buildCommand: |
       pip install --upgrade pip
       pip install setuptools wheel
